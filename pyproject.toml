@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "personal-voice-ai-assistant"
+version = "0.1.0"
+description = "Jarvis Lite rebuilt with Django"
+authors = ["Harsh <you@example.com>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^5.1.0"
+django-cors-headers = "^4.6.0"
+python-dotenv = "^1.0.1"
+requests = "^2.32.3"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.9.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
