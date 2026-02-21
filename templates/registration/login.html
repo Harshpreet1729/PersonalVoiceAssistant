@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}Log In{% endblock %}
+
+{% block content %}
+<main class="w-full flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-14 py-10 lg:py-14">
+    <div class="w-full lg:w-1/2 flex justify-start">
+        <p class="flex flex-col gap-2 sm:gap-3 px-1 sm:px-3 lg:px-2 py-4 text-[#f8fafc] font-satoshi text-4xl sm:text-5xl lg:text-6xl leading-tight">
+            <span class="block text-[#ff637e] text-6xl sm:text-7xl lg:text-8xl font-semibold tracking-tight leading-none">VAANI</span>
+            Smarter responses<br>Faster workflows<br>Intelligent automation
+        </p>
+    </div>
+    <section class="w-full lg:w-1/2">
+        <div class="w-full flex justify-start lg:justify-end">
+            <div class="w-full sm:w-[92%] md:w-[82%] lg:w-full max-w-2xl border border-white/50 rounded-2xl shadow-sm p-6 sm:p-8" style="background-color:#0c0a09;">
+                <h2 class="text-2xl sm:text-3xl text-[#fdf2f8] font-semibold text-center mb-7">Welcome Back</h2>
+                <form method="post" class="space-y-4 sm:space-y-5">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ next }}">
+
+                    {% if form.non_field_errors %}
+                        <div class="text-sm text-red-200">
+                            {{ form.non_field_errors }}
+                        </div>
+                    {% endif %}
+
+                    <div class="space-y-1.5">
+                        <input
+                            type="text"
+                            name="username"
+                            id="{{ form.username.id_for_label }}"
+                            value="{{ form.username.value|default_if_none:'' }}"
+                            placeholder="Username"
+                            class="w-full h-12 rounded-lg border border-gray-300/80 bg-white/95 px-4 text-base focus:outline-none focus:ring-2 focus:ring-[#ff637e]/40"
+                            required
+                        >
+                        {% if form.username.errors %}
+                            <div class="text-sm text-red-200">{{ form.username.errors }}</div>
+                        {% endif %}
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <input
+                            type="password"
+                            name="password"
+                            id="{{ form.password.id_for_label }}"
+                            placeholder="Password"
+                            class="w-full h-12 rounded-lg border border-gray-300/80 bg-white/95 px-4 text-base focus:outline-none focus:ring-2 focus:ring-[#ff637e]/40"
+                            required
+                        >
+                        {% if form.password.errors %}
+                            <div class="text-sm text-red-200">{{ form.password.errors }}</div>
+                        {% endif %}
+                    </div>
+
+                    <label class="flex items-center gap-2 text-sm text-[#f8fafc] pt-1">
+                        <input
+                            type="checkbox"
+                            name="remember_me"
+                            class="h-4 w-4 rounded border-gray-300"
+                            {% if form.remember_me.value %}checked{% endif %}
+                        >
+                        Remember me
+                    </label>
+
+                    <button type="submit" class="w-full h-12 rounded-lg bg-[#fdf2f8] font-bold text-gray-900 hover:opacity-90 transition">
+                        Log in
+                    </button>
+                </form>
+
+                <p class="mt-6 text-center text-sm text-[#f8fafc]">
+                    New here?
+                    <a href="{% url 'signup' %}" class="text-[#ff637e] hover:underline">Create an account</a>
+                </p>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}

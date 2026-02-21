@@ -1,0 +1,19 @@
+{
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "emmet.includeLanguages": {
+    "django-html": "html"
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "editor.colorDecorators": true,
+  "tailwindCSS.colorDecorators": true,
+  "tailwindCSS.includeLanguages": {
+    "django-html": "html",
+    "htmldjango": "html",
+    "jinja-html": "html"
+  },
+  "files.associations": {
+    "**/templates/**/*.html": "django-html"
+  }
+}

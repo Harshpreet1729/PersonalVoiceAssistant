@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<main class="w-full py-10 sm:py-14 md:py-16">
+    <section class="mx-auto w-full max-w-5xl text-center px-3 sm:px-5">
+        <h1 class="font-satoshi text-[1.9rem] sm:text-[2.7rem] md:text-[3.4rem] 
+        lg:text-[4.1rem] font-medium leading-[0.95] text-[#f8fafc] 
+        drop-shadow-sm"
+            style="font-family: 'Satoshi-Variable', sans-serif;">
+            Meet <span class="font-satoshi text-[#ff637e]" style="font-family: 'Satoshi-Variable', sans-serif;">Vaani</span> An Intelligent Digital Companion
+        </h1>
+
+        <p class="mx-auto mt-6 sm:mt-7 max-w-3xl text-base sm:text-xl md:text-2xl text-[#ecfeff] leading-relaxed font-light tracking-tight">
+            Your personal AI companion designed to think, respond, and execute in real time.
+        </p>
+
+        <div class="mt-8 sm:mt-10">
+            <a href="{% if user.is_authenticated %}{% url 'chat' %}{% else %}{% url 'login' %}{% endif %}"
+               class="inline-flex items-center justify-center rounded-full 
+               bg-[#fdf2f8] text-[#ff637e] font-bold text-3xl sm:text-base 
+               md:text-lg px-6 sm:px-8 md:px-10 py-2.5 sm:py-3 
+               shadow-[0_0_20px_rgba(17,24,39,0.55)] 
+               hover:shadow-[0_0_28px_rgba(17,24,39,0.8)] 
+               transition-shadow duration-300"
+               style="font-family: Georgia, 'Times New Roman', serif;">
+                Experience Vaani
+            </a>
+        </div>
+    </section>
+</main>
+{% endblock %}

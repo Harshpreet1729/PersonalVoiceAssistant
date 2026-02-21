@@ -1,0 +1,25 @@
+{
+  "Django block": {
+    "prefix": "blocm",
+    "body": [
+      "{% block ${1:name} %}",
+      "\t$0",
+      "{% endblock %}"
+    ],
+    "description": "Django block"
+  },
+  "Django extends": {
+    "prefix": "extm",
+    "body": [
+      "{% extends \"${1:base.html}\" %}"
+    ],
+    "description": "Django extends"
+  },
+  "Django csrf_token": {
+    "prefix": "csrfm",
+    "body": [
+      "{% csrf_token %}"
+    ],
+    "description": "Django csrf token"
+  }
+}

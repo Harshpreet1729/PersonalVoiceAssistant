@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<main class="w-full flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-14 py-10 lg:py-14">
+    <div class="w-full lg:w-1/2 flex justify-start">
+        <p class="flex flex-col gap-2 sm:gap-3 px-1 sm:px-3 lg:px-2 py-4 text-[#f8fafc] font-satoshi text-4xl sm:text-5xl lg:text-6xl leading-tight">
+            <span class="block text-[#ff637e] text-6xl sm:text-7xl lg:text-8xl font-semibold tracking-tight leading-none">VAANI</span>
+            Smarter responses<br>Faster workflows<br>Intelligent automation
+        </p>
+    </div>
+    <section class="w-full lg:w-1/2">
+    <div class="w-full flex justify-start lg:justify-end">
+        <div class="w-full sm:w-[92%] md:w-[82%] lg:w-full max-w-2xl border border-white/50 
+    rounded-2xl shadow-sm p-6 sm:p-8" style="background-color:#0c0a09;">
+        <h2 class="text-2xl sm:text-3xl font-semibold text-[#fdf2f8] text-center mb-7">Create Your Account</h2>
+        <form method="post" class="space-y-4 sm:space-y-5">
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+                <div class="text-sm text-red-200">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            <div class="space-y-1.5">
+                <input
+                    type="text"
+                    name="username"
+                    id="{{ form.username.id_for_label }}"
+                    value="{{ form.username.value|default_if_none:'' }}"
+                    placeholder="Username"
+                    class="w-full h-12 rounded-lg border border-gray-300/80 bg-white/95 px-4 text-base focus:outline-none focus:ring-2 focus:ring-[#ff637e]/40"
+                    required
+                >
+                {% if form.username.errors %}
+                    <div class="text-sm text-red-200">{{ form.username.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="space-y-1.5">
+                <input
+                    type="email"
+                    name="email"
+                    id="{{ form.email.id_for_label }}"
+                    value="{{ form.email.value|default_if_none:'' }}"
+                    placeholder="Email address"
+                    class="w-full h-12 rounded-lg border border-gray-300/80 bg-white/95 px-4 text-base focus:outline-none focus:ring-2 focus:ring-[#ff637e]/40"
+                    required
+                >
+                {% if form.email.errors %}
+                    <div class="text-sm text-red-200">{{ form.email.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="space-y-1.5">
+                <input
+                    type="password"
+                    name="password1"
+                    id="{{ form.password1.id_for_label }}"
+                    placeholder="Password"
+                    class="w-full h-12 rounded-lg border border-gray-300/80 bg-white/95 px-4 text-base focus:outline-none focus:ring-2 focus:ring-[#ff637e]/40"
+                    required
+                >
+                {% if form.password1.errors %}
+                    <div class="text-sm text-red-200">{{ form.password1.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="space-y-1.5">
+                <input
+                    type="password"
+                    name="password2"
+                    id="{{ form.password2.id_for_label }}"
+                    placeholder="Confirm password"
+                    class="w-full h-12 rounded-lg border border-gray-300/80 bg-white/95 px-4 text-base focus:outline-none focus:ring-2 focus:ring-[#ff637e]/40"
+                    required
+                >
+                {% if form.password2.errors %}
+                    <div class="text-sm text-red-200">{{ form.password2.errors }}</div>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="w-full h-12 rounded-lg bg-[#fdf2f8] font-bold text-gray-900 hover:opacity-90 transition">
+                Sign up
+            </button>
+        </form>
+        <p class="mt-6 text-center text-sm text-[#f8fafc]">
+            Already signed up?
+            <a href="{% url 'login' %}" class="text-[#ff637e] hover:underline">Log in</a>
+        </p>
+        </div>
+    </div>
+</section>
+</main>
+{% endblock content %}
